@@ -5,25 +5,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Conversor</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/38a3806765.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="container">
-		<h2 class="text-center text-primary">Conversor decimal a binario</h2>
-		<p>
-			Hola, esta página te permite convertir números en base 10 (decimal) a números en base 2 (binarios).
-			También te permite convertir los resultados a los formatos de signo-magnitud y complemento a uno de 4bytes.
-		</p>
+		<h1 class="text-center"><span class="text-info"><b>B</b></span>inary</h1>
+		<hr>
 		<form action="#" class="form">
 			<div class="form-group">
+				<label for="resultado">Número en base 10</label>
 				<input id="baseInput" type="number" class="form-control">
 			</div>
 			<div class="form-group">
-				<button id="btnConvert" class="btn btn-primary">Convertir</button>
+				<button id="btnConvert" class="btn btn-success">Convertir <i class="fa-solid fa-arrow-right"></i></button>
+				<button type="button" style="float:right;" class="btn btn-info" style="color: white;" data-toggle="modal" data-target="#exampleModal">
+					<i class="fa-solid fa-circle-info"></i>
+				</button>
 			</div>
 		</form>
 	</div>
 	<div class="container">
-		<table id="tableConversion" class="table">
+		<hr>
+		<table id="tableConversion" class="table table-striped table-dark">
 		  <thead>
 		    <tr>		      
 		      <th scope="col">Cociente</th>
@@ -34,7 +37,11 @@
 		  </tbody>
 		</table>
 	</div>
+	
 	<div class="container">
+		<hr>
+		<h3 class="text-center" id="original"></h3>
+		<h3 class="text-center" id="resultSeparated"></h3>
 		<label for="resultado">Resultado</label>
     	<input type="text" class="form-control" id="resultadoBase" placeholder="">
     	<label for="resultado">Signo y magnitud</label>
@@ -42,98 +49,57 @@
     	<label for="resultado">Complemento 1</label>
     	<input type="text" class="form-control" id="resultadoC1" placeholder="">
 	</div>
-	<!-- Toasts -->
+	<div style="height: 50px;"></div>
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Información</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <b>Binary</b> convierte números de formato decimal a formato binario; con tan solo un click podrás
+	        obtener una lista completa del procedimiento dedicado para convertir el número que hayas elegido.
+	        <br><br>
+	        También podrás recibir el resultado en los dos formatos más importantes de representación binaria:
+	        formato de signo y magnitud y formato de 1 complementario.
+	        <hr>
+	        <b>¿Qué es el formato signo y magnitud?</b>
+	        <br>
+            El formato Signo/Magnitud está fundamentado en el sistema posicional binario que representa el signo del entero separado de su magnitud. Se separa un bit para representar el signo; la costumbre es asignar el valor de cero para representar positivo y uno para representar el signo negativo. 
+            <img src="sm.png" width="100%" alt="">
+            <br><br>
+            El bit de signo puede ocupar cualquier posición dentro de los bits de trabajo. En este caso el bit del signo ocupa la primera posición en los digitos binarios.
+	        <hr>
+	        <b>¿Qué es el formato 1 complementario?</b>
+	        <br>
+	        El complemento a 1 y a 2 de un número binario son importantes porque permiten
+			la representación de números negativos. El método de complemento a 2 en
+			aritmética es comúnmente usada en computadoras para manipular números
+			negativos.
+			<br>
+			El complemento a 1 de un numero binario es encontrado simplemente cambiando
+			todos los 1s por 0s y todos los 0s por 1s.
+			<hr>
+			<b>Desarrollador</b>
+			<br>
+			<a href="https://github.com/evilelliot" target="_blank"><button class="btn btn-dark"><i class="fa-brands fa-github"></i> GitHub</button></a>
+			<a href="https://github.com/evilelliot/binaryfy" target="_blank"><button class="btn btn-warning"><i class="fa-solid fa-link"></i> Repositorio</button></a>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script>
-		$(function(){
-			var table = $("#tableConversion tbody");
-			var numberinput = $("#baseInput");
-			var resultO = $("#resultadoBase");
-			var resultSM = $("#resultadoSM");
-			var resultC1 = $("#resultadoC1");
-			// Reverse string
-			function reverse(str){
-			    var res = "";
-			    for (var i = str.length - 1; i >= 0; i--)
-			        res += (str[i]);
-			    return res;
-			}
-			function SMCONVERT(str, flag){
-				var _str = "";
-				var packet_size = 16 - str.length;
-
-				/*console.log("Size of data: " + str.length);
-				console.log("Size of packet: " + (16 - str.length));*/
-				if(str.length <= 15){
-					for(var i = 0; i <= packet_size; i++){
-						if(flag == false && i == 0){
-							_str += '1';
-						}else{
-							_str += '0';	
-						}
-						
-					}	
-				return _str + str;
-				}else{
-					alert("Byte overflow!")
-					return "Byte overflow!";
-				}
-				
-			}
-			function CCONVERT(str){
-				var _str = "";
-				for(var i = 0; i <= str.length; i++){
-					if(str[i] == '0'){
-						_str += '1';
-					}else{
-						_str += '0';
-					}
-				}
-				return _str;
-			}
-			// Convertion function
-			function DECBIN(num, flag)
-			{
-			    var str = "";
-			    var aux = "";
-			    var naux = 0;
-			    table.empty();
-			    while(num){
-			        // adding the result of num & 1 to str
-			        if (num & 1){
-			        	str += '1';
-			        	aux = '1';
-			        }else{
-			        	str += '0';
-			        	aux = '0';
-			        }
-			        naux = num;
-			        naux = naux / 2;
-			        markup = "<tr><td>" + naux + "</td><td>" + aux + "</td></tr>";
-			        table.append(markup);
-			        aux = "";
-			        num >>= 1;
-			    }
-			    var sm = (SMCONVERT(reverse(str), flag));
-			    resultO.val(reverse(str));
-			    resultSM.val(sm);
-			    resultC1.val(CCONVERT(sm));
-			    return str;
-			}
-			// Converter button
-			$("#btnConvert").click(function(e){
-				e.preventDefault();
-				var _value = numberinput.val();
-				if(_value >= 0){
-					DECBIN(_value, true);	
-				}else{
-					DECBIN(_value * (-1), false);
-				}
-			});
-		});
-	</script>
+	<script src="js/main.js"></script>
 </body>
 </html>
+
