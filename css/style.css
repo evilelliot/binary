@@ -1,0 +1,7 @@
+*{
+	margin: 0px;
+}
+#resultSeparated::first-letter{
+	font-weight: bolder;
+	color: #FF7F7F;
+}

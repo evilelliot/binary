@@ -78,6 +78,7 @@ $(function(){
 	        aux = "";
 	        num >>= 1;
 	    }
+	    
 	    var sm = (SMCONVERT(reverse(str), flag));
 	    resultO.val(reverse(str));
 	    resultSM.val(sm);
