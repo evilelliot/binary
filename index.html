@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Conversor</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h2 class="text-center text-primary">Conversor decimal a binario</h2>
+		<p>
+			Hola, esta página te permite convertir números en base 10 (decimal) a números en base 2 (binarios).
+			También te permite convertir los resultados a los formatos de signo-magnitud y complemento a uno de 4bytes.
+		</p>
+		<form action="#" class="form">
+			<div class="form-group">
+				<input id="baseInput" type="number" class="form-control">
+			</div>
+			<div class="form-group">
+				<button id="btnConvert" class="btn btn-primary">Convertir</button>
+			</div>
+		</form>
+	</div>
+	<div class="container">
+		<table id="tableConversion" class="table">
+		  <thead>
+		    <tr>		      
+		      <th scope="col">Cociente</th>
+		      <th scope="col">Binario</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  </tbody>
+		</table>
+	</div>
+	<div class="container">
+		<label for="resultado">Resultado</label>
+    	<input type="text" class="form-control" id="resultadoBase" placeholder="">
+    	<label for="resultado">Signo y magnitud</label>
+    	<input type="text" class="form-control" id="resultadoSM" placeholder="">
+    	<label for="resultado">Complemento 1</label>
+    	<input type="text" class="form-control" id="resultadoC1" placeholder="">
+	</div>
+	<!-- Toasts -->
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script>
+		$(function(){
+			var table = $("#tableConversion tbody");
+			var numberinput = $("#baseInput");
+			var resultO = $("#resultadoBase");
+			var resultSM = $("#resultadoSM");
+			var resultC1 = $("#resultadoC1");
+			// Reverse string
+			function reverse(str){
+			    var res = "";
+			    for (var i = str.length - 1; i >= 0; i--)
+			        res += (str[i]);
+			    return res;
+			}
+			function SMCONVERT(str, flag){
+				var _str = "";
+				var packet_size = 16 - str.length;
+
+				/*console.log("Size of data: " + str.length);
+				console.log("Size of packet: " + (16 - str.length));*/
+				if(str.length <= 15){
+					for(var i = 0; i <= packet_size; i++){
+						if(flag == false && i == 0){
+							_str += '1';
+						}else{
+							_str += '0';	
+						}
+						
+					}	
+				return _str + str;
+				}else{
+					alert("Byte overflow!")
+					return "Byte overflow!";
+				}
+				
+			}
+			function CCONVERT(str){
+				var _str = "";
+				for(var i = 0; i <= str.length; i++){
+					if(str[i] == '0'){
+						_str += '1';
+					}else{
+						_str += '0';
+					}
+				}
+				return _str;
+			}
+			// Convertion function
+			function DECBIN(num, flag)
+			{
+			    var str = "";
+			    var aux = "";
+			    var naux = 0;
+			    table.empty();
+			    while(num){
+			        // adding the result of num & 1 to str
+			        if (num & 1){
+			        	str += '1';
+			        	aux = '1';
+			        }else{
+			        	str += '0';
+			        	aux = '0';
+			        }
+			        naux = num;
+			        naux = naux / 2;
+			        markup = "<tr><td>" + naux + "</td><td>" + aux + "</td></tr>";
+			        table.append(markup);
+			        aux = "";
+			        num >>= 1;
+			    }
+			    var sm = (SMCONVERT(reverse(str), flag));
+			    resultO.val(reverse(str));
+			    resultSM.val(sm);
+			    resultC1.val(CCONVERT(sm));
+			    return str;
+			}
+			// Converter button
+			$("#btnConvert").click(function(e){
+				e.preventDefault();
+				var _value = numberinput.val();
+				if(_value >= 0){
+					DECBIN(_value, true);	
+				}else{
+					DECBIN(_value * (-1), false);
+				}
+			});
+		});
+	</script>
+</body>
+</html>
