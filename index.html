@@ -1,108 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Conversor</title>
-	<link rel="icon" type="image/x-icon" href="ico.ico">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://kit.fontawesome.com/38a3806765.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-	<div class="container">
-		<h1 class="text-center"><span class="text-info"><b>B</b></span>inary</h1>
-		<hr>
-		<form action="#" class="form">
-			<div class="form-group">
-				<label for="resultado">Número en base 10</label>
-				<input id="baseInput" type="number" class="form-control">
-			</div>
-			<div class="form-group">
-				<button id="btnConvert" class="btn btn-success">Convertir <i class="fa-solid fa-arrow-right"></i></button>
-				<button type="button" style="float:right;" class="btn btn-info" style="color: white;" data-toggle="modal" data-target="#exampleModal">
-					<i class="fa-solid fa-circle-info"></i>
-				</button>
-			</div>
-		</form>
-	</div>
-	<div class="container">
-		<hr>
-		<table id="tableConversion" class="table table-striped table-dark">
-		  <thead>
-		    <tr>		      
-		      <th scope="col">Cociente</th>
-		      <th scope="col">Binario</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		  </tbody>
-		</table>
-	</div>
-	
-	<div class="container">
-		<hr>
-		<h2 class="text-center" id="original"></h2>
-		<br>
-		<h2 class="text-center" id="resultSeparated"></h2>
-		<label for="resultado">Resultado</label>
-    	<input type="text" class="form-control" id="resultadoBase" placeholder="">
-    	<label for="resultado">Signo y magnitud</label>
-    	<input type="text" class="form-control" id="resultadoSM" placeholder="">
-    	<label for="resultado">Complemento 1</label>
-    	<input type="text" class="form-control" id="resultadoC1" placeholder="">
-	</div>
-	<div style="height: 50px;"></div>
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Información</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-	        <b>Binary</b> convierte números de formato decimal a formato binario; con tan solo un click podrás
-	        obtener una lista completa del procedimiento dedicado para convertir el número que hayas elegido.
-	        <br><br>
-	        También podrás recibir el resultado en los dos formatos más importantes de representación binaria:
-	        formato de signo y magnitud y formato de 1 complementario.
-	        <hr>
-	        <b>¿Qué es el formato signo y magnitud?</b>
-	        <br>
-            El formato Signo/Magnitud está fundamentado en el sistema posicional binario que representa el signo del entero separado de su magnitud. Se separa un bit para representar el signo; la costumbre es asignar el valor de cero para representar positivo y uno para representar el signo negativo. 
-            <img src="sm.png" width="100%" alt="">
-            <br><br>
-            El bit de signo puede ocupar cualquier posición dentro de los bits de trabajo. En este caso el bit del signo ocupa la primera posición en los digitos binarios.
-	        <hr>
-	        <b>¿Qué es el formato 1 complementario?</b>
-	        <br>
-	        El complemento a 1 y a 2 de un número binario son importantes porque permiten
-			la representación de números negativos. El método de complemento a 2 en
-			aritmética es comúnmente usada en computadoras para manipular números
-			negativos.
-			<br>
-			El complemento a 1 de un numero binario es encontrado simplemente cambiando
-			todos los 1s por 0s y todos los 0s por 1s.
-			<hr>
-			<b>Desarrollador</b>
-			<br>
-			<a href="https://github.com/evilelliot" target="_blank"><button class="btn btn-dark"><i class="fa-brands fa-github"></i> GitHub</button></a>
-			<a href="https://github.com/evilelliot/binaryfy" target="_blank"><button class="btn btn-warning"><i class="fa-solid fa-link"></i> Repositorio</button></a>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script src="js/main.js"></script>
-</body>
-</html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversor</title>
+    <link rel="icon" type="image/x-icon" href="ico.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/38a3806765.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">
+        <span class="text-info"><b>B</b></span
+        >inary
+      </h1>
+      <hr />
+      <form action="#" class="form">
+        <div class="form-group">
+          <label for="resultado">Número en base 10</label>
+          <input id="baseInput" type="number" class="form-control" />
+        </div>
+        <div class="form-group">
+          <button id="btnConvert" class="btn btn-success">
+            Convertir <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <button
+            type="button"
+            style="float: right"
+            class="btn btn-info"
+            style="color: white"
+            data-toggle="modal"
+            data-target="#exampleModal"
+          >
+            <i class="fa-solid fa-circle-info"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="accordion container" id="accordionExample">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button
+              class="btn btn-link"
+              type="button"
+              data-toggle="collapse"
+              data-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              Conversión binaria
+            </button>
+          </h5>
+        </div>
 
+        <div
+          id="collapseOne"
+          class="collapse show"
+          aria-labelledby="headingOne"
+          data-parent="#accordionExample"
+        >
+          <div class="card-body">
+            <table id="tableConversion" class="table table-striped table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Cociente</th>
+                  <th scope="col">Binario</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <hr />
+      <h2 class="text-center" id="original"></h2>
+      <br />
+      <h2 class="text-center" id="resultSeparated"></h2>
+      <label for="resultado">Resultado</label>
+      <input
+        type="text"
+        class="form-control"
+        id="resultadoBase"
+        placeholder=""
+      />
+      <label for="resultado">Signo y magnitud</label>
+      <input type="text" class="form-control" id="resultadoSM" placeholder="" />
+      <label for="resultado">Complemento 1</label>
+      <input type="text" class="form-control" id="resultadoC1" placeholder="" />
+    </div>
+    <div style="height: 50px"></div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Información</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <b>Binary</b> convierte números de formato decimal a formato
+            binario; con tan solo un click podrás obtener una lista completa del
+            procedimiento dedicado para convertir el número que hayas elegido.
+            <br /><br />
+            También podrás recibir el resultado en los dos formatos más
+            importantes de representación binaria: formato de signo y magnitud y
+            formato de 1 complementario.
+            <hr />
+            <b>¿Qué es el formato signo y magnitud?</b>
+            <br />
+            El formato Signo/Magnitud está fundamentado en el sistema posicional
+            binario que representa el signo del entero separado de su magnitud.
+            Se separa un bit para representar el signo; la costumbre es asignar
+            el valor de cero para representar positivo y uno para representar el
+            signo negativo.
+            <img src="sm.png" width="100%" alt="" />
+            <br /><br />
+            El bit de signo puede ocupar cualquier posición dentro de los bits
+            de trabajo. En este caso el bit del signo ocupa la primera posición
+            en los digitos binarios.
+            <hr />
+            <b>¿Qué es el formato 1 complementario?</b>
+            <br />
+            El complemento a 1 y a 2 de un número binario son importantes porque
+            permiten la representación de números negativos. El método de
+            complemento a 2 en aritmética es comúnmente usada en computadoras
+            para manipular números negativos.
+            <br />
+            El complemento a 1 de un numero binario es encontrado simplemente
+            cambiando todos los 1s por 0s y todos los 0s por 1s.
+            <hr />
+            <b>Desarrollador</b>
+            <br />
+            <a href="https://github.com/evilelliot" target="_blank"
+              ><button class="btn btn-dark">
+                <i class="fa-brands fa-github"></i> GitHub
+              </button></a
+            >
+            <a href="https://github.com/evilelliot/binaryfy" target="_blank"
+              ><button class="btn btn-warning">
+                <i class="fa-solid fa-link"></i> Repositorio
+              </button></a
+            >
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
